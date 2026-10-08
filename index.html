@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نبراس مادة عباداتي</title>
+  <style>
+    body {
+      background-color: #fbf9f4;
+      color: #1f2d3d;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 15px;
+      direction: rtl;
+      text-align: right;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .brand-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #0b4f8a;
+      margin: 0;
+    }
+    .brand-slogan {
+      font-size: 14px;
+      color: #536b88;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+    .subject-badge {
+      display: inline-block;
+      background: #f5a623;
+      color: #fff;
+      padding: 5px 18px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 8px;
+    }
+    .card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 3px solid #eef4fb;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    .btn {
+      background: #0b4f8a;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      padding: 12px 24px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 6px 4px;
+    }
+    .btn:hover {
+      background: #083863;
+    }
+    .btn-retry {
+      background: #f5a623 !important;
+    }
+    .btn-exit-quiz {
+      background: #fff0f0;
+      color: #c0392b;
+      border: 2px solid #f5c6cb;
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .btn-exit-quiz:hover {
+      background: #f8d7da;
+      border-color: #e74c3c;
+    }
+    .btn-next-action {
+      background: #0b4f8a;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 11px 26px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(11, 79, 138, 0.2);
+    }
+    .btn-next-action:hover {
+      background: #083863;
+    }
+    .input-text {
+      width: 75%;
+      padding: 12px 18px;
+      font-size: 18px;
+      border: 2px solid #ccdcee;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: bold;
+      color: #052c52;
+      outline: none;
+      margin-bottom: 15px;
+    }
+    .gender-selector {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 18px;
+    }
+    .gender-btn {
+      background: #f0f4f8;
+      border: 2px solid #ccdcee;
+      border-radius: 14px;
+      padding: 10px 22px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #486581;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .gender-btn.active {
+      border-color: #0b4f8a;
+      background: #e2ebf3;
+      color: #0b4f8a;
+      box-shadow: 0 3px 8px rgba(11, 79, 138, 0.15);
+    }
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    @media (min-width: 500px) {
+      .lessons-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .lesson-item {
+      background: #fdfefe;
+      border: 2px solid #ddecfa;
+      border-radius: 16px;
+      padding: 14px;
+      cursor: pointer;
+    }
+    .lesson-item:hover {
+      border-color: #0b4f8a;
+      background: #f4f8fd;
+    }
+    .lesson-item.passed {
+      border-color: #27ae60;
+      background: #f4fbf7;
+    }
+    .lesson-item.need-retry {
+      border-color: #f5a623;
+      background: #fffdf9;
+    }
+    .progress-bar-bg {
+      width: 120px;
+      height: 12px;
+      background: #e2ebf3;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: #27ae60;
+      transition: width 0.3s;
+    }
+    .opt-btn {
+      width: 100%;
+      background: #fff;
+      border: 2px solid #dce8f5;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: right;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .opt-btn:hover:not(:disabled) {
+      background: #f0f7ff;
+      border-color: #0b4f8a;
+    }
+    .opt-btn.correct {
+      background: #d4edda !important;
+      border-color: #27ae60 !important;
+      color: #155724 !important;
+    }
+    .opt-btn.wrong {
+      background: #f8d7da !important;
+      border-color: #e74c3c !important;
+      color: #721c24 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div style="font-size: 36px; color: #f5a623;">☀</div>
+    <h1 class="brand-title">نِبْرَاس</h1>
+    <div class="brand-slogan">جِيلٌ يَهْتَدِي بِالوَحْيِ فِي غَسَقِ الفِتَن</div>
+    <div class="subject-badge">مادة عباداتي</div>
+  </div>
+
+  <div class="card">
+    
+    <!-- 1. شاشة البداية -->
+    <div id="loginScreen" style="display: block; text-align: center; padding: 15px 0;">
+      <h2 style="color: #052c52; margin-bottom: 10px;">أهلاً بكم في رحلة الفقه الممتعة! 🌟</h2>
+      <p style="color: #627d98; font-weight: bold; margin-bottom: 15px;">اختر من أنت واكتب اسمك الكريم:</p>
+      
+      <div class="gender-selector">
+        <button type="button" class="gender-btn active" id="genderBoy" onclick="setGender('boy')">👦 بطل</button>
+        <button type="button" class="gender-btn" id="genderGirl" onclick="setGender('girl')">👧 بطلة (أميرتنا الغالية)</button>
+      </div>
+
+      <input type="text" id="studentNameInput" class="input-text" placeholder="اكتب اسمك هنا...">
+      <br>
+      <button type="button" class="btn" onclick="startAdventure()">انطلاق 🚀</button>
+    </div>
+
+    <!-- 2. خريطة الدروس -->
+    <div id="mapScreen" style="display: none;">
+      <div style="background: #fff2d6; border: 2px dashed #f5a623; border-radius: 16px; padding: 12px; text-align: center; font-size: 17px; font-weight: bold; color: #052c52;">
+        <span id="displayGreeting"></span>: <span id="displayName" style="color: #0b4f8a;"></span> ✨
+      </div>
+      <div class="lessons-grid" id="lessonsGrid"></div>
+      <div style="text-align: center; margin-top: 20px;" id="finalCertBtnArea"></div>
+    </div>
+
+    <!-- 3. شاشة الاختبار -->
+    <div id="quizScreen" style="display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-exit-quiz" onclick="confirmExitLesson()">خروج لقائمة الدروس ⬅</button>
+          <span id="currentLessonIndicator" style="font-weight: bold; color: #0b4f8a;"></span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+      <div id="questionText" style="font-size: 18px; font-weight: bold; color: #052c52; background: #f8fbfe; padding: 16px; border-radius: 14px; border-right: 5px solid #f5a623; margin-bottom: 18px; line-height: 1.6;"></div>
+      <div id="optionsBox"></div>
+      <div style="text-align: center; min-height: 50px; margin-top: 15px;">
+        <div id="feedbackMsg" style="font-weight: bold; font-size: 16px; margin-bottom: 8px;"></div>
+        <div id="nextBtnArea"></div>
+      </div>
+    </div>
+
+    <!-- 4. شاشة نتيجة الدرس -->
+    <div id="lessonResultScreen" style="display: none; text-align: center; padding: 15px 0;">
+      <div id="resultIcon" style="font-size: 45px; margin-bottom: 5px;">🌟</div>
+      <h2 id="resultTitle" style="color: #0b4f8a; margin: 5px 0;"></h2>
+      <div id="lessonScoreDisplay" style="font-size: 36px; font-weight: 900; color: #f5a623; margin: 10px 0;"></div>
+      <p id="lessonPraiseDisplay" style="font-size: 17px; font-weight: bold; color: #052c52; line-height: 1.7; margin: 15px 0;"></p>
+      <div id="resultButtons"></div>
+    </div>
+
+    <!-- 5. شاشة الشهادة -->
+    <div id="certificateScreen" style="display: none; text-align: center; padding: 20px 0;">
+      <div style="border: 5px double #f5a623; border-radius: 20px; padding: 25px 15px;">
+        <div style="font-size: 42px;">🏆</div>
+        <h2 style="color: #0b4f8a; margin: 8px 0;">بطاقة التميز والفخر لمادة عباداتي</h2>
+        <div style="color: #627d98; font-weight: bold;" id="certSubTitle"></div>
+        <div id="certStudentName" style="font-size: 26px; color: #f5a623; font-weight: 900; margin: 10px 0; text-decoration: underline;"></div>
+        <div style="font-weight: bold; color: #052c52;" id="certCompletionText"></div>
+        <div id="certFinalPercent" style="font-size: 32px; font-weight: 900; color: #27ae60; margin: 12px 0;"></div>
+        <p style="font-weight: bold; color: #536b88; line-height: 1.8;" id="certDuaaText"></p>
+      </div>
+      <div style="margin-top: 20px;">
+        <button type="button" class="btn" onclick="window.print()">طباعة البطاقة 🖨️</button>
+        <button type="button" class="btn" style="background: #627d98;" onclick="returnToMap()">العودة للدروس</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var lessonsData = [
+  {
+    "id": 0,
+    "title": "قيمة النظافة في الإسلام",
+    "questions": [
+      {
+        "q": "كم خصلة من سنن الفطرة وردت في الحديث المذكور في المقرر؟",
+        "options": [
+          "خمس",
+          "سبع",
+          "عشر"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيُّ مما يأتي من سنن الفطرة؟",
+        "options": [
+          "تقليم الأظافر",
+          "غسل الثوب كل يوم",
+          "تمشيط الشعر قبل النوم"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيُّ مجموعة تمثل سنن الفطرة الواردة في الحديث؟",
+        "options": [
+          "الختان، والاستحداد، ونتف الإبط، وتقليم الأظفار، وقص الشارب",
+          "السواك، والغسل، ولبس الثوب النظيف، وقص الشعر، وغسل القدمين",
+          "الوضوء، والصلاة، والصيام، والزكاة، والحج"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كيف كان النبي  ﷺ  يتعامل مع شعره؟",
+        "options": [
+          "كان يتركه دون نظافة وترجيل",
+          "كان يرجل شعره وينظفه",
+          "كان يحلق شعره دائمًا"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "لماذا اهتم النبي  ﷺ  بنظافة الفم والأسنان؟",
+        "options": [
+          "حتى لا يؤذي المسلم إخوانه برائحة فمه",
+          "لأن تنظيف الأسنان واجب قبل النوم فقط",
+          "لأن السواك خاص بالمسجد"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ماذا حدث للرجل الذي أماط غصن شوك عن الطريق؟",
+        "options": [
+          "غفر الله له وأدخله الجنة",
+          "لم يحصل على شيء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "حب الظهور بثوب نظيف من علامات الكبر",
+        "options": [
+          "الجملة صحيحة",
+          "الجملة خاطئة"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "متى كان النبي  ﷺ  ينظف أسنانه بالسواك؟",
+        "options": [
+          "عند دخوله و خروجه من البيت",
+          "بعد الفراغ من الطعام",
+          "الإجابة الأولي و الثانية"
+        ],
+        "ans": 2
+      },
+      {
+        "q": "أكل عبد الرحمن طعامًا فيه ثوم، ثم حان وقت صلاة العصر، فهل ذهابه إلى المسجد لأداء الصلاة موافق لهدي النبي  ﷺ ؟",
+        "options": [
+          "نعم، تصرفه موافق لهدي النبي  ﷺ",
+          "لا، تصرفه غير موافق لهدي النبي  ﷺ"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "قال النبي  ﷺ :  «على كل رجل مسلم في كل __________ غسل يوم، وهو يوم __________» .",
+        "options": [
+          "خمسة أيام — السبت",
+          "سبعة أيام — الجمعة",
+          "عشرة أيام — الأحد"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "العبارة الآتية صحيحة أم خاطئة؟ النظافة سلوك شخصي لا علاقة له بالدين.",
+        "options": [
+          "العبارة صحيحة",
+          "العبارة خاطئة"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "آداب قضاء الحاجة",
+    "questions": [
+      {
+        "q": "ماذا يقول المسلم عند دخول الخلاء؟",
+        "options": [
+          "بسم الله، اللهم إني أعوذ بك من الخبث والخبائث",
+          "غفرانك",
+          "الحمد لله"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ماذا يقول المسلم عند الخروج من الخلاء؟",
+        "options": [
+          "بسم الله",
+          "غفرانك",
+          "سبحان الله"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيُّ رجل يُقدِّم المسلم عند دخول الخلاء؟",
+        "options": [
+          "رجله اليمنى",
+          "رجله اليسرى",
+          "لا فرق بينهما"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيُّ رجل يُقدِّم المسلم عند الخروج من الخلاء؟",
+        "options": [
+          "رجله اليمنى",
+          "رجله اليسرى",
+          "لا فرق بينهما"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيُّ مكان من الأماكن الآتية يجتنب المسلم قضاء الحاجة فيه؟",
+        "options": [
+          "طريق الناس",
+          "الظل النافع",
+          "الأولي و الثانية"
+        ],
+        "ans": 2
+      },
+      {
+        "q": "عند قضاء الحاجة لا أستقبل القبلة ولا أستدبرها في __________.",
+        "options": [
+          "المسجد",
+          "الصحراء",
+          "المنزل"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيُّ رجل يُقدِّم المسلم عند الدخول إلي الخلاء؟",
+        "options": [
+          "رجله اليمنى",
+          "رجله اليسرى",
+          "لا فرق بينهما"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "اختَر السلوك الصحيح في الموقف الآتي: تحدَّث سعد مع أخيه وهو يقضي حاجته، فما التصرف الصحيح؟",
+        "options": [
+          "يتحدث معه حتى ينتهي من قضاء حاجته",
+          "لا يردُّ عليه حتى ينتهي من قضاء حاجته"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "أقسام المياه",
+    "questions": [
+      {
+        "q": "إلى كم قسمًا ينقسم الماء في المقرر؟",
+        "options": [
+          "قسمين",
+          "ثلاثة أقسام",
+          "أربعة أقسام"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما المقصود بالماء الطهور؟",
+        "options": [
+          "الماء الذي تغير بالنجاسة",
+          "الماء الذي لم يتغير بالنجاسة",
+          "الماء الذي تغير إلى شيء آخر"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيّ مما يلي يُعد من مصادر الماء الطهور ؟",
+        "options": [
+          "مياه العيون",
+          "مياه الأمطار",
+          "الإجابة الأولي و الثانية"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ماذا يحدث للماء الطهور إذا خالطه شيء طاهر ولم يتحول إلى شيء آخر؟",
+        "options": [
+          "يبقى على طهارته ويصح التطهر به",
+          "يصبح ماءً نجسًا",
+          "لا يصح التطهر به"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم الماء إذا خالطه شيء طاهر فتحول إلى شيء آخر؟",
+        "options": [
+          "يصح التطهر به",
+          "لا يصح التطهر به",
+          "يصبح ماءً نجسًا"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما المقصود بالماء النجس؟",
+        "options": [
+          "الماء الذي تغير لونه أو طعمه أو ريحه بنجاسة",
+          "الماء الذي تغير لونه بشيء طاهر",
+          "الماء الذي خالطه التراب"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم الماء النجس؟",
+        "options": [
+          "يصح التطهر به",
+          "يحرم استعماله ولا يصح التطهر به",
+          "يجوز استعماله ولا يصح التطهر به"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "هل يصبح الماء نجسًا إذا تغير بنجاسة سواء كان قليلًا أم كثيرًا؟",
+        "options": [
+          "نعم",
+          "لا، إذا كان كثيرًا",
+          "لا، إذا كان قليلًا"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي مثال على الماء النجس المذكور في الدرس؟",
+        "options": [
+          "مياه المجاري والصرف الصحي",
+          "مياه العيون",
+          "ماء المطر"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "سقطت دجاجة في إناء من الماء، فماتت وتغيرت رائحة الماء، فما حكم هذا الماء؟",
+        "options": [
+          "ماء طهور",
+          "ماء نجس",
+          "ماء طاهر يصح التطهر به"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "هل تصرُّف سالم صحيح أم خاطئ؟ كان سالم يغسل أسنانه، فترك الماء جاريًا طوال فترة تنظيف أسنانه.",
+        "options": [
+          "تصرُّف صحيح",
+          "تصرُّف خاطئ"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "إزالة النجاسة",
+    "questions": [
+      {
+        "q": "ما المقصود بالاستنجاء؟",
+        "options": [
+          "غسل مخرج البول والغائط بالماء حتى تزول النجاسة",
+          "مسح مخرج البول والغائط بالأحجار أو المناديل حتى تزول النجاسة",
+          "غسل أعضاء الوضوء بالماء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما المقصود بالاستجمار ؟",
+        "options": [
+          "غسل مخرج البول والغائط بالماء حتى تزول النجاسة",
+          "مسح مخرج البول والغائط بالأحجار أو المناديل حتى تزول النجاسة",
+          "غسل أعضاء الوضوء بالماء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيّ مما يلي يُعد من الأشياء التي يجوز الاستجمار بها؟",
+        "options": [
+          "الأحجار",
+          "الورق الذي فيه ذكر الله عز و جل",
+          "الروث"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي من الأشياء التي لا يجوز الاستجمار بها؟",
+        "options": [
+          "المناديل",
+          "الأحجار",
+          "العظام"
+        ],
+        "ans": 2
+      },
+      {
+        "q": "كم عدد المسحات التي يجب ألا يقل عنها الاستجمار؟",
+        "options": [
+          "مسحتان",
+          "ثلاث مسحات",
+          "أربع مسحات إذا انتشرت النجاسة عن مخرج البول أو الغائط، فهل يجوز الاستجمار؟",
+          "نعم، يجوز الاستجمار",
+          "لا، لا يصح الاستجمار",
+          "يستحب الاستنجاء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "قضى شخص حاجته فمسح مخرج البول بالمناديل ثلاث مسحات منقية، فما حكم فعله؟",
+        "options": [
+          "يكفيه الاستجمار",
+          "يجب عليه الاستنجاء بالماء",
+          "لا يصح له استخدام المناديل"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "قضى شخص حاجته فمسح مخرج البول بالمناديل مرة واحدة فقط؛ فما الحكم؟",
+        "options": [
+          "يكفيه الاستجمار",
+          "لا يكفيه ذلك",
+          "لا يصح له استخدام المناديل"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "قضى شخص حاجته، ثم انتشرت النجاسة عن مخرج البول، فما التصرف الصحيح؟",
+        "options": [
+          "يجب استخدام الماء",
+          "يكفي التنظيف بدون الماء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي يوضح الفرق بين الاستنجاء والاستجمار؟",
+        "options": [
+          "الاستنجاء يكون بالماء، والاستجمار يكون بالأحجار أو المناديل",
+          "الاستنجاء يكون بالأحجار، والاستجمار يكون بالماء",
+          "كلاهما يكون بالماء فقط"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ موقف يطبق شروط الاستجمار تطبيقًا صحيحًا؟",
+        "options": [
+          "شخص مسح مرة واحدة بالمناديل بعد انتشار النجاسة عن موضعها",
+          "شخص مسح ثلاث مسحات منقية بالأحجار، ولم تتجاوز النجاسة موضعها",
+          "شخص استجمر بورق مكتوب عليه ذكر الله عز وجل"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "بال طفل في أحد أركان المسجد، فأراد بعض الناس تنظيف المكان، فما التصرف الصحيح وفق الحديث الوارد في المقرر؟",
+        "options": [
+          "يتركون النجاسة حتى تجف",
+          "يطهرون المكان بالماء",
+          "يغطون مكان النجاسة بسجادة"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "الوضوء: فضائله - كيفيته - شروطه",
+    "questions": [
+      {
+        "q": "ما حكم الوضوء عند مس المصحف؟",
+        "options": [
+          "يجب الوضوء",
+          "يستحب الوضوء",
+          "لا علاقة له بالوضوء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم الوضوء عند الطواف؟",
+        "options": [
+          "يجب الوضوء",
+          "يستحب الوضوء",
+          "لا علاقة له بالوضوء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ موقف يستحب فيه الوضوء؟",
+        "options": [
+          "عند النوم",
+          "عند تناول الطعام",
+          "عند ذكر الله",
+          "الأولي و الثالثة"
+        ],
+        "ans": 3
+      },
+      {
+        "q": "ماذا يحدث لخطايا المسلم إذا توضأ فأحسن الوضوء؟",
+        "options": [
+          "تخرج خطاياه من جسده حتى تخرج من تحت أظفاره",
+          "لا يحدث شيء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كيف يكون مسح الرأس في صفة الوضوء المذكورة؟",
+        "options": [
+          "يمسح الرأس مرة واحدة",
+          "يمسح الرأس ثلاث مرات",
+          "يغسل الرأس بالماء ثلاث مرات"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أراد شخص الوضوء، وكان على أحد أعضاء وضوئه صمغ يمنع وصول الماء إلى البشرة؛ فما الحكم؟",
+        "options": [
+          "يصح وضوؤه كما هو",
+          "لا يصح وضوؤه حتى يزيل ما يمنع وصول الماء إلى البشرة",
+          "يصح وضوؤه إذا نوى بقلبه"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كم عدد شروط الوضوء المذكورة في المقرر؟",
+        "options": [
+          "شرطين",
+          "ثلاثة شروط",
+          "أربعة شروط"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "النية من:",
+        "options": [
+          "شروط الوضوء",
+          "فروض الوضوء",
+          "سنن الوضوء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "العبارة الآتية صحيحة أم خاطئة؟ يجب الاستنجاء بالماء قبل الوضوء.",
+        "options": [
+          "العبارة صحيحة",
+          "العبارة خاطئة"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "بعد أن انتهى عبد الله من الوضوء، قال: «سأقول الذكر بعد الوضوء». أي ذكر يوافق ما ورد في المقرر؟",
+        "options": [
+          "أستغفر الله ثلاث مرات",
+          "أشهد أن لا إله إلا الله، وأن محمدًا عبد الله ورسوله",
+          "سبحان الله والحمد لله فقط"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "فروض الوضوء وسننه وأحكامه ونواقضه",
+    "questions": [
+      {
+        "q": "فروض الوضوء هي: الأمور التي لا يصح الوضوء إلا بها، فمن ترك واحداً منها أو بعضه بغير عذر، لم يصح وضوؤه، هذا تعريف؟",
+        "options": [
+          "شروط الوضوء",
+          "فروض الوضوء",
+          "سنن الوضوء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كم عدد فروض الوضوء المذكورة في المقرر؟",
+        "options": [
+          "خمسة",
+          "ستة",
+          "سبعة"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيّ مما يلي من فروض الوضوء؟",
+        "options": [
+          "التسوك",
+          "تخليل أصابع اليدين والرجلين",
+          "غسل الوجه"
+        ],
+        "ans": 2
+      },
+      {
+        "q": "ماذا يدخل في غسل الوجه من فروض الوضوء؟",
+        "options": [
+          "المضمضة والاستنشاق",
+          "غسل اليدين إلى المرفقين",
+          "مسح الرأس"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما المقصود بالموالاة في الوضوء؟",
+        "options": [
+          "تكرار غسل كل عضو ثلاث مرات",
+          "ألا يفصل بين أعضاء الوضوء فصلًا طويلًا",
+          "غسل أعضاء الوضوء بالترتيب"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيّ مما يلي من سنن الوضوء المذكورة في المقرر؟",
+        "options": [
+          "التسوك",
+          "غسل الرجلين",
+          "مسح الرأس"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم تخليل ما بين أصابع اليدين و الرجلين بالنسبة إلى الوضوء وفق المقرر؟",
+        "options": [
+          "من فروض الوضوء",
+          "من سنن الوضوء",
+          "من شروط الوضوء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أيّ مما يلي من نواقض الوضوء وفقاً للمقرر؟",
+        "options": [
+          "أكل لحم الإبل",
+          "إكل لحم الماعز",
+          "أكل لحم البقر"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي لا يدخل في حكم أكل لحم الإبل الناقض للوضوء؟",
+        "options": [
+          "لحم الإبل",
+          "لبن الإبل",
+          "اللحم المطبوخ من الإبل"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما الحكم فيمن صلى بغير وضوء ناسيًا؟",
+        "options": [
+          "لا شيء عليه",
+          "يجب عليه إعادة الصلاة",
+          "يستحب له إعادة الصلاة فقط"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما الحكم فيمن شك في غسل أحد أعضاء الوضوء بعد انتهاء الوضوء؟",
+        "options": [
+          "يلتفت إلى الشك ويعيد الوضوء",
+          "لا يلتفت إلى الشك",
+          "يغسل العضو فقط دون غيره"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "هل يجوز غسل أعضاء الوضوء على صفات مختلفة، كأن يُغسل بعضها مرة وبعضها مرتين وبعضها ثلاثًا؟",
+        "options": [
+          "نعم، يجوز",
+          "لا، يجب غسل جميع أعضاء الوضوء بالعدد نفسه، إما مرة، أو مرتين، أو ثلاث مرات"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "توضأ إسماعيل، لكنه ترك مدة طويلة بين غسل وجهه وغسل يديه حتى جف وجهه تمامًا. فهل وضوئه صحيح؟",
+        "options": [
+          "وضوءه صحيح",
+          "وضوءه غير صحيح"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان عمر يتوضأ، فغسل أعضاء الوضوء مرة واحدة لكل عضو. هل يصح وضوؤه؟",
+        "options": [
+          "نعم",
+          "لا، يجب غسل كل عضو ثلاث مرات"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كان أحمد متوضئًا، ثم خرجت منه ريح. ماذا يفعل إذا أراد الصلاة؟",
+        "options": [
+          "يصلي ولا شيء عليه",
+          "يعيد الوضوء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان عبد الله متوضئًا، ثم مس فرجه بيده مباشرة دون وجود حائل. ماذا يحدث لوضوئه؟",
+        "options": [
+          "لا ينتقض وضوؤه",
+          "ينتقض وضوؤه"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "جلس خالد في المسجد، ونعس قليلًا وهو جالس ولم يستغرق في النوم. هل ينتقض وضوؤه؟",
+        "options": [
+          "نعم، كل نوم ينقض الوضوء",
+          "لا، النوم اليسير من قاعد لا ينقض الوضوء"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان عزالدين متوضئًا، ثم شك: هل أحدث أم لا؟ وكان متيقنًا قبل ذلك أنه على وضوء. ماذا يفعل؟",
+        "options": [
+          "يعيد الوضوء",
+          "يبقى على وضوئه"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "توضأ فهد وصلى الظهر، ثم قضى حاجته، وبعد ذلك شك: هل توضأ مرة أخرى أم لا؟ ماذا يفعل؟",
+        "options": [
+          "يصلي العصر بوضوئه السابق",
+          "يتوضأ"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان محمود يتوضأ، فغسل وجهه ويديه للنظافة، ثم نوى بعد ذلك أن يكمل باقي الأعضاء بنية الوضوء. هل يصح وضوؤه؟",
+        "options": [
+          "نعم، يصح وضوءه",
+          "لا، لا يصح وضوءه",
+          "نعم؛ إذا كان علي سفر"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "التيمم",
+    "questions": [
+      {
+        "q": "ما المقصود بالتيمم؟",
+        "options": [
+          "مسح الوجه والكفين بالصعيد الطاهر بقصد الطهارة",
+          "غسل الوجه والكفين بالماء بقصد الطهارة"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "متى يجب التيمم بدلًا عن الوضوء والغسل؟",
+        "options": [
+          "عند فقد الماء أو عدم القدرة على استعماله",
+          "عند وجود الماء والقدرة على استعماله",
+          "عند الرغبة في التخفيف من الوضوء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي من صفة التيمم الصحيحة؟",
+        "options": [
+          "ضرب التراب باليدين ضربة واحدة، ثم مسح الوجه والكفين",
+          "ضرب التراب مرتين، ضربة للوجه وضربة للكفين",
+          "ضرب التراب باليدين ضربة واحدة، ثم مسح الوجه"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كم مرة يمسح المتيمم وجهه في الصفة المذكورة في المقرر؟",
+        "options": [
+          "مرة واحدة",
+          "مرتين",
+          "ثلاث مرات"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما فروضا التيمم؟",
+        "options": [
+          "مسح الوجه ومسح الكفين",
+          "مسح الرأس ومسح القدمين",
+          "غسل الوجه وغسل الكفين"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أيّ مما يلي من شروط التيمم؟",
+        "options": [
+          "النية",
+          "مسح الوجه",
+          "نجاسة التراب"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "رجل بجانب البحر، وليس معه ماء عذب يتوضأ منه، وهو بعيد عن البلد؛ فما حكم تيممه وفق المقرر؟",
+        "options": [
+          "يشرع له التيمم",
+          "لا يشرع له التيمم"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "رجل تذكّر وهو يصلي أنه مُحدِث، فتيمم بالسجاد ثم أتم صلاته، فما حكم فعله؟",
+        "options": [
+          "فعله صحيح",
+          "فعله غير صحيح"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "التيمم:",
+        "options": [
+          "اختص الله به أمة محمد ﷺ",
+          "كان معروفًا في الأمم السابقة"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "العبارة الآتية صحيحة أم خاطئة؟ الذي لا يستطيع الوضوء والتيمم لا يترك الصلاة، بل يصلي على حسب حاله.",
+        "options": [
+          "العبارة صحيحة",
+          "العبارة خاطئة"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كان محمد في مكان شديد البرودة، ومعه ماء، لكنه لا يستطيع تدفئته ولا يقدر على استعماله. ماذا يفعل؟",
+        "options": [
+          "يتيمم",
+          "يستعمل الماء"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "تيمم عمر، فضرب التراب بيديه ثم مسح وجهه، فهل تيممه صحيح؟",
+        "options": [
+          "نعم، تيممه صحيح",
+          "لا، تيممه ليس بصحيح"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان عبد الرحمن يريد التيمم، لكنه لم يستحضر نية الطهارة، ثم ضرب التراب ومسح وجهه وكفيه. ما الحكم؟",
+        "options": [
+          "تيممه صحيح",
+          "لا، تيممه غير صحيح",
+          "يصح إذا كان التراب طاهرًا فقط"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "تيمم يوسف لأنه لم يجد ماءً، ثم وجد الماء قبل أن يبدأ الصلاة. ماذا يفعل؟",
+        "options": [
+          "يصلي بالتيمم",
+          "يتوضأ بالماء ويصلي"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان مسافرًا في الصحراء، ومعه ماء قليل، ولم يجد ما يكفيه للوضوء. ماذا يفعل؟",
+        "options": [
+          "يتيمم ويصلي",
+          "يستخدم الماء القليل مهما ترتب عليه"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "أراد صالح أن يتيمم، فضرب التراب بيديه ثم مسح ذراعيه إلى المرفقين. ما الخطأ في فعله؟",
+        "options": [
+          "لا يوجد خطأ",
+          "الفرض في التيمم مسح الوجه والكفين",
+          "كان يجب أن يغسل ذراعيه بالماء"
+        ],
+        "ans": 1
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "المسح على الحوائل (الخفين والجبيرة)",
+    "questions": [
+      {
+        "q": "ما المقصود بالخف؟",
+        "options": [
+          "ما يُلبس على القدمين من الجلد ونحوه",
+          "ما يُلبس على القدمين من الصوف أو القطن ونحوهما",
+          "ما يُشد على الكسور من الجبس"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما المقصود بالجورب؟",
+        "options": [
+          "ما يُلبس على القدمين من الجلد فقط",
+          "ما يُلبس على القدمين من الصوف أو القطن ونحوهما",
+          "ما يُلصق على الجروح للتداوي"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما حكم المسح على الخفين والجوربين؟",
+        "options": [
+          "يجوز",
+          "لا يجوز",
+          "يجوز للمسافر فقط"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم المسح على جورب لا يستر الكعبين؟",
+        "options": [
+          "يجوز المسح عليه",
+          "لا يجوز المسح عليه",
+          "يجوز للمسافر فقط"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "متى يكون المسح على الخفين والجوربين؟",
+        "options": [
+          "في الوضوء دون الغسل",
+          "في الغسل دون الوضوء",
+          "في الوضوء والغسل معًا"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "كيف يكون المسح الصحيح على الجوربين؟",
+        "options": [
+          "يمسح أسفل الجوربين فقط",
+          "يمسح ظاهرهما من أصابع القدمين إلى الساق مرة واحدة",
+          "يمسح الجوربين من جميع الجوانب ثلاث مرات"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما مدة المسح على الجوربين للمقيم؟",
+        "options": [
+          "يوم وليلة",
+          "ثلاثة أيام بلياليها",
+          "حتى يخلع الجوربين"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما مدة المسح على الجوربين للمسافر؟",
+        "options": [
+          "يوم وليلة",
+          "ثلاثة أيام بلياليها",
+          "خمسة أيام"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "متى تبدأ مدة المسح على الجوربين؟",
+        "options": [
+          "من وقت لبسهما",
+          "من أول مسح بعد حدوث الحدث",
+          "من أول اليوم الذي لبس فيه الجورب"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما الشرط لجواز المسح على الجبيرة والعصابة واللصوق؟",
+        "options": [
+          "ألا تتجاوز موضع الحاجة",
+          "أن تكون قد لُبست على طهارة"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "ما حكم من استغنى عن العصابة فلم يخلعها ومسح عليها؟",
+        "options": [
+          "طهارته صحيحة",
+          "طهارته باطلة",
+          "يجوز له المسح عليها حتى نهاية اليوم"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "ما الفرق الصحيح بين المسح على الجوربين أو الجورب والمسح على بقية الحوائل؟",
+        "options": [
+          "المسح على الجوربين له مدة محددة، أما بقية الحوائل فيمسح عليها ما دامت الحاجة إليها قائمة",
+          "كلاهما له مدة يوم وليلة للمقيم وثلاثة أيام للمسافر",
+          "المسح على بقية الحوائل يشترط أن تكون لُبست على طهارة، بخلاف الجوربين"
+        ],
+        "ans": 0
+      },
+      {
+        "q": "توضأ أحمد وغسل رجليه جيدًا، ثم لبس جوربيه، وبعد فترة انتقض وضوؤه. أراد أن يتوضأ للصلاة، فماذا يفعل؟",
+        "options": [
+          "يغسل رجليه ولا يجوز له المسح على الجوربين",
+          "يجوز له المسح على الجوربين"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان مع خالد جورب لا يغطي الكعبين، وانتقض وضوؤه، فأراد أن يمسح عليه. ماذا يفعل؟",
+        "options": [
+          "يمسح عليه",
+          "لا يمسح عليه",
+          "يمسح عليه إذا كان في السفر"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "وصل عمر في وضوئه إلى رجليه وعليه جوربان، فبلل يديه بالماء ومسح أسفل الجوربين. هل فعله صحيح؟",
+        "options": [
+          "نعم، فعله صحيح",
+          "لا، فعله ليس بالصحيح",
+          "نعم، إذا مسح ثلاث مرات"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "كان يوسف مسافرًا ويمسح على جوربيه، فهل مدة المسح له مثل مدة المقيم؟",
+        "options": [
+          "نعم، يوم وليلة",
+          "لا، مدة المسح للمسافر ثلاثة أيام بلياليها",
+          ") لا، مدة المسح للمسافر خمسة أيام بلياليها"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "أصيب أحمد بكسر في قدمه، ووضع الطبيب له جبيرة يحتاج إلى بقائها. أراد أحمد أن يتوضأ، فماذا يفعل؟",
+        "options": [
+          "يخلع الجبيرة ولو تضرر",
+          "يمسح على الجبيرة عند الحاجة إلى بقائها",
+          "لا يتوضأ"
+        ],
+        "ans": 1
+      },
+      {
+        "q": "وضعت فاطمة عصابة على جرح في يدها، وكانت تحتاج إلى بقائها، فهل يشترط أن تكون قد لبستها على طهارة حتى تمسح عليها؟",
+        "options": [
+          "نعم، يشترط ذلك",
+          "لا، يجوز المسح عليها سواء لبستها على طهارة أم لا، ما دامت الحاجة إليها قائمة",
+          "يجوز للمسافر فقط"
+        ],
+        "ans": 1
+      }
+    ]
+  }
+];
+
+    var selectedGender = "boy";
+    var studentName = "";
+    var scores = {};
+    var currentLesson = null;
+    var currentLessonIndex = 0;
+    var currentQIdx = 0;
+    var currentLessonScore = 0;
+    var autoNextTimeout = null;
+
+    function setGender(g) {
+      selectedGender = g;
+      document.getElementById("genderBoy").className = "gender-btn" + (g === "boy" ? " active" : "");
+      document.getElementById("genderGirl").className = "gender-btn" + (g === "girl" ? " active" : "");
+    }
+
+    function showScreen(screenId) {
+      var screens = ["loginScreen", "mapScreen", "quizScreen", "lessonResultScreen", "certificateScreen"];
+      for (var i = 0; i < screens.length; i++) {
+        var el = document.getElementById(screens[i]);
+        if (el) el.style.display = "none";
+      }
+      var target = document.getElementById(screenId);
+      if (target) target.style.display = "block";
+      window.scrollTo(0, 0);
+    }
+
+    function startAdventure() {
+      var input = document.getElementById("studentNameInput");
+      var name = input ? input.value.trim() : "";
+      if (!name) {
+        alert(selectedGender === "boy" ? "من فضلك اكتب اسمك أولاً يا بطل!" : "من فضلكِ اكتبي اسمكِ أولاً يا أميرتنا الغالية!");
+        return;
+      }
+      studentName = name;
+      renderMap();
+      showScreen("mapScreen");
+    }
+
+    function confirmExitLesson() {
+      var msg = selectedGender === "boy" ? 
+        "هل تريد الخروج والعودة لقائمة الدروس يا بطل؟" : 
+        "هل تريدين الخروج والعودة لقائمة الدروس يا أميرتنا الغالية؟";
+      if (confirm(msg)) {
+        if (autoNextTimeout) clearTimeout(autoNextTimeout);
+        returnToMap();
+      }
+    }
+
+    function renderMap() {
+      var greetingEl = document.getElementById("displayGreeting");
+      var nameEl = document.getElementById("displayName");
+      if (greetingEl) {
+        greetingEl.innerText = (selectedGender === "boy" ? "مرحباً يا بطلنا المتميز" : "مرحباً يا أميرتنا الغالية والمتميزة");
+      }
+      if (nameEl) nameEl.innerText = studentName;
+
+      var grid = document.getElementById("lessonsGrid");
+      if (!grid) return;
+      grid.innerHTML = "";
+
+      var completedCount = 0;
+
+      for (var i = 0; i < lessonsData.length; i++) {
+        (function(index) {
+          var lesson = lessonsData[index];
+          var hasScore = scores[lesson.id] !== undefined;
+          var itemClass = "lesson-item";
+          var statusText = "اضغط للبدء 🎯";
+          var statusBadge = "⏳ متاح";
+
+          if (hasScore) {
+            completedCount++;
+            var score = scores[lesson.id];
+            var percent = (score / lesson.questions.length) * 100;
+            if (percent >= 70) {
+              itemClass += " passed";
+              statusText = "درجتك: " + score + " / " + lesson.questions.length + " (" + Math.round(percent) + "%)";
+              statusBadge = "✅ متميز";
+            } else {
+              itemClass += " need-retry";
+              statusText = "درجتك: " + score + " / " + lesson.questions.length + " (" + Math.round(percent) + "%)";
+              statusBadge = "🔄 يُنصح بإعادته";
+            }
+          }
+
+          var card = document.createElement("div");
+          card.className = itemClass;
+          card.onclick = function() { startLesson(index); };
+
+          card.innerHTML = 
+            '<div>' +
+              '<div style="font-size: 13px; color: #f5a623; font-weight: bold; margin-bottom: 4px;">الدرس ' + (index + 1) + '</div>' +
+              '<div style="font-size: 15px; font-weight: bold; color: #052c52; margin-bottom: 8px;">' + lesson.title + '</div>' +
+            '</div>' +
+            '<div style="font-size: 13px; font-weight: bold; color: #7b94ad; display: flex; justify-content: space-between;">' +
+              '<span>' + statusText + '</span>' +
+              '<span>' + statusBadge + '</span>' +
+            '</div>';
+          grid.appendChild(card);
+        })(i);
+      }
+
+      var certArea = document.getElementById("finalCertBtnArea");
+      if (certArea) {
+        if (completedCount === 8) {
+          certArea.innerHTML = '<button type="button" class="btn" style="background: #27ae60; font-size: 18px;" onclick="showFinalCertificate()">🏆 استلام بطاقة التميز والفخر 🏆</button>';
+        } else {
+          var keepGoing = selectedGender === "boy" ? "واصل همتك يا بطل!" : "واصلي همتكِ يا أميرتنا الغالية، فخورون بأميراتنا الغاليات دائماً! 🌸";
+          certArea.innerHTML = '<span style="font-size: 13px; color: #7b94ad; font-weight: bold;">أنجزتِ مراجعة ' + completedCount + ' من أصل 8 دروس. ' + keepGoing + '</span>';
+        }
+      }
+    }
+
+    function startLesson(lessonIndex) {
+      if (autoNextTimeout) clearTimeout(autoNextTimeout);
+      currentLessonIndex = lessonIndex;
+      currentLesson = lessonsData[lessonIndex];
+      currentQIdx = 0;
+      currentLessonScore = 0;
+      showScreen("quizScreen");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      if (autoNextTimeout) clearTimeout(autoNextTimeout);
+      var q = currentLesson.questions[currentQIdx];
+      
+      document.getElementById("currentLessonIndicator").innerText = currentLesson.title;
+      var progressPercent = ((currentQIdx + 1) / currentLesson.questions.length) * 100;
+      document.getElementById("progressBar").style.width = progressPercent + "%";
+
+      document.getElementById("questionText").innerText = q.q;
+      document.getElementById("feedbackMsg").innerText = "";
+      document.getElementById("nextBtnArea").innerHTML = "";
+
+      var box = document.getElementById("optionsBox");
+      box.innerHTML = "";
+
+      for (var i = 0; i < q.options.length; i++) {
+        (function(idx) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "opt-btn";
+          btn.innerText = q.options[idx];
+          btn.onclick = function() { handleAnswer(idx, btn); };
+          box.appendChild(btn);
+        })(i);
+      }
+    }
+
+    function goToNextQuestion() {
+      if (autoNextTimeout) clearTimeout(autoNextTimeout);
+      currentQIdx++;
+      if (currentQIdx < currentLesson.questions.length) {
+        renderQuestion();
+      } else {
+        finishLesson();
+      }
+    }
+
+    function handleAnswer(selectedIdx, clickedBtn) {
+      var q = currentLesson.questions[currentQIdx];
+      var allBtns = document.querySelectorAll(".opt-btn");
+      for (var i = 0; i < allBtns.length; i++) {
+        allBtns[i].disabled = true;
+      }
+
+      var feedback = document.getElementById("feedbackMsg");
+      var nextBtnArea = document.getElementById("nextBtnArea");
+
+      var isBoy = (selectedGender === "boy");
+
+      if (selectedIdx === q.ans) {
+        clickedBtn.classList.add("correct");
+        currentLessonScore++;
+
+        var boyPraises = [
+          "مبدع ورائع! بارك الله في علمك ونور قلبك 🌟",
+          "أحسنتَ القول يا بطل، إجابة مسددة وصحيحة! 👏",
+          "ما شاء الله تبارك الله! فتح الله عليك فتوح العارفين ✨",
+          "إجابة ممتازة وذكية يا فقيهنا الصغير! 🌿"
+        ];
+        var girlPraises = [
+          "رائعة ومبدعة يا أميرتنا الغالية! بارك الله في علمكِ ونور قلبكِ 🌟",
+          "أحسنتِ القول يا أميرتنا الغالية، إجابة صحيحة ومسددة! 👏",
+          "ما شاء الله تبارك الله على أميراتنا الغاليات الذكيات! فتح الله عليكِ ✨",
+          "إجابة ممتازة يا أميرة الفقه الجميلة! دمتِ فخراً 🌸"
+        ];
+        var praises = isBoy ? boyPraises : girlPraises;
+        var praise = praises[Math.floor(Math.random() * praises.length)];
+
+        feedback.style.color = "#27ae60";
+        feedback.innerText = praise;
+
+        autoNextTimeout = setTimeout(function() {
+          goToNextQuestion();
+        }, 1400);
+
+      } else {
+        clickedBtn.classList.add("wrong");
+        if (allBtns[q.ans]) allBtns[q.ans].classList.add("correct");
+        
+        var boyRetry = [
+          "لا بأس يا ذكي! انظر للإجابة الصحيحة المحددة بالأخضر لتتعلم منها 🌸",
+          "محاولة طيبة يا بطل! اقرأ السؤال والإجابة الصحيحة جيداً ثم اضغط التالي 💪",
+          "من الأخطاء نتعلّم ونتميز! تأمل الإجابة الصحيحة ثم تابع طريقك نحو القمة ☀️"
+        ];
+        var girlRetry = [
+          "لا بأس يا أميرتنا الغالية! انظري للإجابة الصحيحة المحددة بالأخضر لتتعلمي منها 🌸",
+          "محاولة طيبة يا أميرتنا الغالية! اقرئي السؤال والإجابة الصحيحة جيداً ثم اضغطي التالي 💪",
+          "أميراتنا الغاليات يتعلمن من المحاولة ليصلن للقمة دائماً! تأملي الإجابة الصحيحة وتابعي ☀️"
+        ];
+        var retryList = isBoy ? boyRetry : girlRetry;
+        var retry = retryList[Math.floor(Math.random() * retryList.length)];
+
+        feedback.style.color = "#e74c3c";
+        feedback.innerText = retry;
+
+        nextBtnArea.innerHTML = '<button type="button" class="btn-next-action" onclick="goToNextQuestion()">السؤال التالي ⬅</button>';
+      }
+    }
+
+    function finishLesson() {
+      scores[currentLesson.id] = currentLessonScore;
+      showScreen("lessonResultScreen");
+      var totalQ = currentLesson.questions.length;
+      var percentage = (currentLessonScore / totalQ) * 100;
+      var isBoy = (selectedGender === "boy");
+
+      document.getElementById("lessonScoreDisplay").innerText = currentLessonScore + " / " + totalQ + " (" + Math.round(percentage) + "%)";
+
+      var resultTitle = document.getElementById("resultTitle");
+      var resultIcon = document.getElementById("resultIcon");
+      var praiseEl = document.getElementById("lessonPraiseDisplay");
+      var btnArea = document.getElementById("resultButtons");
+
+      if (percentage >= 70) {
+        resultIcon.innerText = "🌟";
+        resultTitle.innerText = isBoy ? "أحسنتَ وأبدعتَ يا بطلنا المتميز! 👏" : "أحسنتِ وأبدعتِ يا أميرتنا الغالية! 👏";
+        praiseEl.innerHTML = "ما شاء الله تبارك الله يا <strong>" + studentName + "</strong>!<br>" +
+          (isBoy ? "لقد أتممتَ مراجعة درس (" : "لقد أتممتِ مراجعة درس (") + currentLesson.title + ") بنتيجة رائعة وهمة عالية. " +
+          (isBoy ? "بارك الله في فهمك وعلمك وجعلك قرة عين لوالديك." : "بارك الله في فهمكِ وعلمكِ يا أميرتنا الغالية، وجعلكِ الله قدوة لأميراتنا الغاليات وقرة عين لوالديكِ.");
+        btnArea.innerHTML = '<button type="button" class="btn" onclick="returnToMap()">متابعة الدروس 📖</button>' +
+                            '<button type="button" class="btn btn-retry" onclick="startLesson(' + currentLessonIndex + ')">إعادة لزيادة الإتقان ✨</button>';
+      } else {
+        resultIcon.innerText = "🌱";
+        resultTitle.innerText = isBoy ? "محاولة طيبة يا بطلنا الغالي!" : "محاولة طيبة يا أميرتنا الغالية!";
+        praiseEl.innerHTML = (isBoy ? "حبيبي البطل <strong>" : "أميرتنا الغالية <strong>") + studentName + "</strong>.. " +
+          (isBoy ? "أنت بطل ذكي ومتميز 💫<br>لكي تصبح درجاتك متألقة دائماً، ما رأيك أن تعيد مراجعة درس (" : "أنتِ أميرة ذكية ومتميزة كما عهدنا أميراتنا الغاليات 💫<br>لكي تصبح درجاتكِ متألقة دائماً، ما رأيكِ أن تعيدي مراجعة درس (") +
+          currentLesson.title + (isBoy ? ") سريعاً ثم تخوض الاختبار مرة أخرى لتحسن درجتك وتصل للقمة؟ أنت قادر عليها بكل سهولة! 🌟" : ") سريعاً ثم تخوضي الاختبار مرة أخرى لتحسني درجتكِ وتصلي للقمة؟ أنتِ قادرة عليها بكل سهولة يا أميرتنا الغالية! 🌟");
+        btnArea.innerHTML = '<button type="button" class="btn btn-retry" onclick="startLesson(' + currentLessonIndex + ')">' + (isBoy ? "إعادة محاولة الدرس الآن 🔁" : "إعادة محاولة الدرس الآن 🔁") + '</button>' +
+                            '<button type="button" class="btn" style="background: #627d98;" onclick="returnToMap()">العودة لقائمة الدروس 📖</button>';
+      }
+    }
+
+    function returnToMap() {
+      if (autoNextTimeout) clearTimeout(autoNextTimeout);
+      renderMap();
+      showScreen("mapScreen");
+    }
+
+    function showFinalCertificate() {
+      var totalEarned = 0;
+      var totalPossible = 0;
+      var isBoy = (selectedGender === "boy");
+
+      for (var i = 0; i < lessonsData.length; i++) {
+        var l = lessonsData[i];
+        totalEarned += (scores[l.id] || 0);
+        totalPossible += l.questions.length;
+      }
+
+      var percent = Math.round((totalEarned / totalPossible) * 100);
+
+      document.getElementById("certSubTitle").innerText = isBoy ? 
+        "برنامج نِبراس يهنئ البطل المتميز:" : 
+        "برنامج نِبراس يهنئ أميرتنا الغالية والمتميزة:";
+      document.getElementById("certStudentName").innerText = studentName;
+      document.getElementById("certCompletionText").innerText = isBoy ? 
+        "لإتمامه مراجعة الدروس الثمانية بنجاح وتفوق!" : 
+        "لإتمامها مراجعة الدروس الثمانية بنجاح وتفوق مبهر كعادتها بين أميراتنا الغاليات!";
+      document.getElementById("certFinalPercent").innerText = "النسبة الإجمالية: " + percent + "%";
+      document.getElementById("certDuaaText").innerText = isBoy ? 
+        "ما شاء الله لا قوة إلا بالله! زادك الله علماً وفقهاً ونوراً في قلبك، وجعلك الله قرة عين لوالديك ونبراساً يُقتدى به." :
+        "ما شاء الله لا قوة إلا بالله! زادكِ الله علماً وفقهاً ونوراً في قلبكِ يا أميرتنا الغالية، وجعلكِ الله فخراً لأميراتنا الغاليات وقرة عين لوالديكِ ونبراساً يُقتدى به.";
+
+      showScreen("certificateScreen");
+    }
+
+    window.onload = function() {
+      var input = document.getElementById("studentNameInput");
+      if (input) {
+        input.onkeydown = function(e) {
+          if (e.key === "Enter") {
+            startAdventure();
+          }
+        };
+      }
+    };
+  </script>
+</body>
+</html>
